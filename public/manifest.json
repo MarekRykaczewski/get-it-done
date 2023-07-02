@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Eisenhower Matrices",
+    "version": "1.0",
+    "description": "A Chrome extension for creating Eisenhower matrices to track tasks.",
+  
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
