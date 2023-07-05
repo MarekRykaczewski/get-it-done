@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import CreateTask from "./CreateTask"
 import Task from "./Task"
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
+import { useDrop } from 'react-dnd'
+import { ItemTypes } from "./Task"
 
 const Matrix = () => {
 
@@ -29,7 +29,19 @@ const Matrix = () => {
     setTasksDelete(fTasksDelete)
   }, [tasks])
 
-  return (
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: ItemTypes.TASK,
+    drop: (item) => addItemToSection(item.id),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver()
+    })
+  }))
+
+  const addItemToSection = (id) => {
+    console.log("dropped", id)
+  }
+
+  return (  
     <div className="flex flex-col items-center gap-5">
       <h1 className='text-xl font-bold'>Name of matrix</h1>
       <CreateTask 
@@ -38,14 +50,13 @@ const Matrix = () => {
       />
      <div className='grid auto-cols-min auto-rows-min px-10'>
                 
-        <DndProvider backend={HTML5Backend}>       
-        <div className='flex flex-col p-3 gap-2 items-center justify-center col-start-1 row-start-1 bg-green-200 w-[400px] h-[400px]'>
+        <div  className='flex flex-col p-3 gap-2 items-center justify-center col-start-1 row-start-1 bg-green-200 w-[400px] h-[400px]'>
           {tasksDo?.map(task => (
             <Task key={task.id} id={task.id}> {task.name} </Task>
           ))}
         </div>
 
-        <div className='col-start-2 row-start-1 bg-blue-200 w-[400px] h-[400px]'>
+        <div ref={drop} className='col-start-2 row-start-1 bg-blue-200 w-[400px] h-[400px]'>
           {tasksDecide?.map(task => (
             <Task key={task.id} id={task.id}> {task.name} </Task>
           ))}
@@ -62,7 +73,6 @@ const Matrix = () => {
             <Task key={task.id} id={task.id}> {task.name} </Task>
           ))}
         </div>
-        </DndProvider> 
 
     </div>
   </div>
