@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import CreateTask from "./CreateTask"
 import Task from "./Task"
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Matrix = () => {
 
@@ -36,29 +38,31 @@ const Matrix = () => {
       />
      <div className='grid auto-cols-min auto-rows-min px-10'>
                 
+        <DndProvider backend={HTML5Backend}>       
         <div className='flex flex-col p-3 gap-2 items-center justify-center col-start-1 row-start-1 bg-green-200 w-[400px] h-[400px]'>
           {tasksDo?.map(task => (
-            <Task key={task.id}> {task.name} </Task>
+            <Task key={task.id} id={task.id}> {task.name} </Task>
           ))}
         </div>
 
         <div className='col-start-2 row-start-1 bg-blue-200 w-[400px] h-[400px]'>
           {tasksDecide?.map(task => (
-            <div key={task.id}> {task.name} </div>
+            <Task key={task.id} id={task.id}> {task.name} </Task>
           ))}
         </div>
 
         <div className='col-start-1 row-start-2 bg-orange-200 w-[400px] h-[400px]'>
           {tasksDelegate?.map(task => (
-            <div key={task.id}> {task.name} </div>
+            <Task key={task.id} id={task.id}> {task.name} </Task>
           ))}
         </div>
 
         <div className='col-start-2 row-start-2 bg-red-200 w-[400px] h-[400px]'>
           {tasksDelete?.map(task => (
-            <div key={task.id}> {task.name} </div>
+            <Task key={task.id} id={task.id}> {task.name} </Task>
           ))}
         </div>
+        </DndProvider> 
 
     </div>
   </div>

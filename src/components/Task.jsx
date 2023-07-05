@@ -1,6 +1,21 @@
-const Task = ({ children }) => {
+import { useDrag } from 'react-dnd'
+
+const Task = ({ id, children }) => {
+
+  const ItemTypes = {
+    TASK: 'task'
+  }
+
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: ItemTypes.TASK,
+    item: { id: id },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging()
+    })
+  }))
+
   return (
-    <div className="flex justify-between items-center border bg-opacity-60 hover:bg-opacity-100 transition border-slate-400 bg-slate-100 rounded-md h-12 w-full px-1">
+    <div ref={drag} className={`flex justify-between items-center border ${ isDragging && "opacity-25"} bg-opacity-60 hover:bg-opacity-100 transition border-slate-400 bg-slate-100 rounded-md h-12 w-full px-1`}>
         <div>
         <input type="checkbox" />
             {children}
