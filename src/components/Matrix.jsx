@@ -12,7 +12,7 @@ const Matrix = () => {
   const [tasksDelete, setTasksDelete] = useState([])
 
   useEffect(() => {
-    setTasks(JSON.parse(localStorage.getItem("tasks")))
+    setTasks(JSON.parse(localStorage.getItem("tasks")) || [])
   }, [])
 
   useEffect(() => {
