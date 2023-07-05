@@ -1,10 +1,10 @@
 import { useDrag } from 'react-dnd'
 
-const Task = ({ id, children }) => {
+export const ItemTypes = {
+  TASK: 'task'
+}
 
-  const ItemTypes = {
-    TASK: 'task'
-  }
+const Task = ({ id, children }) => {
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.TASK,
