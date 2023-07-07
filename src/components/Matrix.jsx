@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
 import CreateTask from "./CreateTask"
-import Task from "./Task"
-import { useDrop } from 'react-dnd'
-import { ItemTypes } from "./Task"
+import Section from "./Section"
 
 const Matrix = () => {
 
@@ -29,18 +27,6 @@ const Matrix = () => {
     setTasksDelete(fTasksDelete)
   }, [tasks])
 
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: ItemTypes.TASK,
-    drop: (item) => addItemToSection(item.id),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver()
-    })
-  }))
-
-  const addItemToSection = (id) => {
-    console.log("dropped", id)
-  }
-
   return (  
     <div className="flex flex-col items-center gap-5">
       <h1 className='text-xl font-bold'>Name of matrix</h1>
@@ -50,30 +36,38 @@ const Matrix = () => {
       />
      <div className='grid auto-cols-min auto-rows-min px-10'>
                 
-        <div  className='flex flex-col p-3 gap-2 items-center justify-center col-start-1 row-start-1 bg-green-200 w-[400px] h-[400px]'>
-          {tasksDo?.map(task => (
-            <Task key={task.id} id={task.id}> {task.name} </Task>
-          ))}
-        </div>
+        <Section 
+          tasks={tasksDo} 
+          setTasks={setTasks}
+          position='col-start-1 row-start-1'
+          color='bg-green-200'
+          category='do'
+        />
 
-        <div ref={drop} className='col-start-2 row-start-1 bg-blue-200 w-[400px] h-[400px]'>
-          {tasksDecide?.map(task => (
-            <Task key={task.id} id={task.id}> {task.name} </Task>
-          ))}
-        </div>
+        <Section 
+          tasks={tasksDecide} 
+          setTasks={setTasks}
+          position='col-start-2 row-start-1'
+          color='bg-blue-200'
+          category='decide'
+        />
 
-        <div className='col-start-1 row-start-2 bg-orange-200 w-[400px] h-[400px]'>
-          {tasksDelegate?.map(task => (
-            <Task key={task.id} id={task.id}> {task.name} </Task>
-          ))}
-        </div>
+        <Section 
+          tasks={tasksDelegate} 
+          setTasks={setTasks}
+          position='col-start-1 row-start-2'
+          color='bg-orange-200'
+          category='delegate'
+        />
 
-        <div className='col-start-2 row-start-2 bg-red-200 w-[400px] h-[400px]'>
-          {tasksDelete?.map(task => (
-            <Task key={task.id} id={task.id}> {task.name} </Task>
-          ))}
-        </div>
-
+        <Section 
+          tasks={tasksDelete} 
+          setTasks={setTasks}
+          position='col-start-2 row-start-2'
+          color='bg-red-200'
+          category='delete'
+        />        
+        
     </div>
   </div>
   )
