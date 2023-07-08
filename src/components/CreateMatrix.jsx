@@ -5,7 +5,7 @@ const CreateMatrix = ({ matrixes, setMatrixes }) => {
 
   const MATRIX_TEMPLATE = {
     id: "",
-    name: ""
+    name: "",
   }
 
   const [matrix, setMatrix] = useState(MATRIX_TEMPLATE)

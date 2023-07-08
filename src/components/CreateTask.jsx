@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
-const CreateTask = ({ tasks, setTasks }) => {
+const CreateTask = ({ currentMatrix, tasks, setTasks }) => {
 
   const TASK_TEMPLATE = {
     id: "",
@@ -22,7 +22,7 @@ const CreateTask = ({ tasks, setTasks }) => {
       setTasks((prev) => {
         const list = [...prev, task]
   
-        localStorage.setItem("tasks", JSON.stringify(list))
+        localStorage.setItem(currentMatrix.id, JSON.stringify(list))
   
         return list
       })

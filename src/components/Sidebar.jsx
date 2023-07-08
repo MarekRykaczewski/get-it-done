@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react"
 import CreateMatrix from "./CreateMatrix"
 
-const Sidebar = () => {
+const Sidebar = ({ setCurrentMatrix }) => {
 
   const [matrixes, setMatrixes] = useState([])
 
   useEffect(() => {
     setMatrixes(JSON.parse(localStorage.getItem("matrixes")) || [])
   }, [])
+
+  const getMatrix = (id) => {
+    return matrixes.find(matrix => matrix.id === id)
+  }
 
   return (
     <nav className="flex flex-col bg-slate-200 h-full w-[300px]">
@@ -17,7 +21,7 @@ const Sidebar = () => {
           setMatrixes={setMatrixes}
          />
         {matrixes.map(matrix => (
-          <div key={matrix.id} id={matrix.id}> {matrix.name} </div>
+          <div onClick={() => setCurrentMatrix(getMatrix(matrix.id))} key={matrix.id} id={matrix.id}> {matrix.name} </div>
        ))}
     </nav>
   )

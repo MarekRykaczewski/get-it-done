@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import CreateTask from "./CreateTask"
 import Section from "./Section"
 
-const Matrix = () => {
+const Matrix = ({ currentMatrix }) => {
+
+  console.log(currentMatrix)
 
   const [tasks, setTasks] = useState([])
 
@@ -12,8 +14,8 @@ const Matrix = () => {
   const [tasksDelete, setTasksDelete] = useState([])
 
   useEffect(() => {
-    setTasks(JSON.parse(localStorage.getItem("tasks")) || [])
-  }, [])
+    setTasks(JSON.parse(localStorage.getItem(currentMatrix.id)) || [])
+  }, [currentMatrix.id])
 
   useEffect(() => {
     const fTasksDo = tasks.filter(task => task.category === "do")
@@ -29,8 +31,9 @@ const Matrix = () => {
 
   return (  
     <div className="flex flex-col items-center gap-5">
-      <h1 className='text-xl font-bold'>Name of matrix</h1>
+      <h1 className='text-xl font-bold'> {currentMatrix.name}</h1>
       <CreateTask 
+        currentMatrix={currentMatrix}
         tasks={tasks} 
         setTasks={setTasks} 
       />
