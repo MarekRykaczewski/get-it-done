@@ -40,6 +40,7 @@ const Matrix = ({ currentMatrix }) => {
      <div className='grid auto-cols-min auto-rows-min px-10'>
                 
         <Section 
+          currentMatrix={currentMatrix}
           tasks={tasksDo} 
           setTasks={setTasks}
           position='col-start-1 row-start-1'
@@ -47,7 +48,8 @@ const Matrix = ({ currentMatrix }) => {
           category='do'
         />
 
-        <Section 
+        <Section
+          currentMatrix={currentMatrix}
           tasks={tasksDecide} 
           setTasks={setTasks}
           position='col-start-2 row-start-1'
@@ -56,6 +58,7 @@ const Matrix = ({ currentMatrix }) => {
         />
 
         <Section 
+          currentMatrix={currentMatrix}
           tasks={tasksDelegate} 
           setTasks={setTasks}
           position='col-start-1 row-start-2'
@@ -64,6 +67,7 @@ const Matrix = ({ currentMatrix }) => {
         />
 
         <Section 
+          currentMatrix={currentMatrix}
           tasks={tasksDelete} 
           setTasks={setTasks}
           position='col-start-2 row-start-2'

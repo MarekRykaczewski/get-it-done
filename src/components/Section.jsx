@@ -3,7 +3,7 @@ import { useDrop } from "react-dnd"
 import { ItemTypes } from "./Task"
 
 
-const Section = ({ tasks, setTasks, color, position, category }) => {
+const Section = ({ currentMatrix, tasks, setTasks, color, position, category }) => {
 
     const [{ isOver }, drop] = useDrop(() => ({
         accept: ItemTypes.TASK,
@@ -24,7 +24,7 @@ const Section = ({ tasks, setTasks, color, position, category }) => {
             return task
           })
     
-          localStorage.setItem("tasks", JSON.stringify(newTasks))
+          localStorage.setItem(currentMatrix.id, JSON.stringify(newTasks))
     
           return newTasks
         })
