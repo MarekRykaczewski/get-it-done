@@ -14,15 +14,17 @@ const Sidebar = ({ setCurrentMatrix }) => {
   }
 
   return (
-    <nav className="flex flex-col bg-slate-200 h-full w-[300px]">
-        <h1 className='text-xl font-bold'> Get it done </h1>
+    <nav className="flex flex-col p-6 bg-slate-200 h-full">
+        <h1 className='text-xl font-bold text-center mb-5'> Get it done </h1>
         <CreateMatrix
           matrixes={matrixes}
           setMatrixes={setMatrixes}
          />
+        <div className="flex flex-col p-5 gap-3">
         {matrixes.map(matrix => (
-          <div onClick={() => setCurrentMatrix(getMatrix(matrix.id))} key={matrix.id} id={matrix.id}> {matrix.name} </div>
-       ))}
+          <button className="border-2 border-slate-400 bg-slate-100 rounded-md mr-4 h-12 px-1" onClick={() => setCurrentMatrix(getMatrix(matrix.id))} key={matrix.id} id={matrix.id}> {matrix.name} </button>
+        ))}
+        </div>
     </nav>
   )
 }

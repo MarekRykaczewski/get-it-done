@@ -32,7 +32,7 @@ const CreateMatrix = ({ matrixes, setMatrixes }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex" onSubmit={handleSubmit}>
       <input 
       type="text" 
       className="border-2 border-slate-400 bg-slate-100 rounded-md mr-4 h-12 w-64 px-1"
