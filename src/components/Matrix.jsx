@@ -40,6 +40,7 @@ const Matrix = ({ currentMatrix }) => {
      <div className='grid auto-cols-min auto-rows-min px-10'>
                 
         <Section 
+          key={`do_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDo} 
           setTasks={setTasks}
@@ -49,6 +50,7 @@ const Matrix = ({ currentMatrix }) => {
         />
 
         <Section
+          key={`decide_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDecide} 
           setTasks={setTasks}
@@ -58,6 +60,7 @@ const Matrix = ({ currentMatrix }) => {
         />
 
         <Section 
+          key={`delegate_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDelegate} 
           setTasks={setTasks}
@@ -67,6 +70,7 @@ const Matrix = ({ currentMatrix }) => {
         />
 
         <Section 
+          key={`delete_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDelete} 
           setTasks={setTasks}
