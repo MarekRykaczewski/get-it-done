@@ -10,12 +10,14 @@ function App() {
   const [currentMatrix, setCurrentMatrix] = useState("")
 
   return (
-    <DndProvider backend={HTML5Backend}>  
-    <div className='flex w-[100%] h-[100vh] items-center justify-between'>
-      <Sidebar
-        setCurrentMatrix={setCurrentMatrix} 
-      />
-      <div className='flex flex-col mr-auto ml-auto gap-3 items-center justify-center'>
+  <DndProvider backend={HTML5Backend}>  
+    <div className='flex flex-col xl:flex-row h-screen gap-3 items-center justify-between'>
+      <div className='w-full xl:w-1/3'>
+        <Sidebar
+          setCurrentMatrix={setCurrentMatrix} 
+        />
+      </div>
+      <div className='w-full xl:w-2/3'> 
         {currentMatrix 
           ? 
           <Matrix
@@ -23,10 +25,10 @@ function App() {
           />
           : 
           <p> Create a Matrix </p>
-         }
+        }
       </div>
     </div>
-    </DndProvider> 
+  </DndProvider>
   )
 }
 

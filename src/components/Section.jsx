@@ -39,9 +39,8 @@ const Section = ({ currentMatrix, tasks, setTasks, color, position, category }) 
         id={task.id}
         tasks={tasks}
         setTasks={setTasks}
-      > 
-        {task.name} 
-        </Task>
+        text={task.name}
+      /> 
     ))}
   </div>
   )
