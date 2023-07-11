@@ -26,16 +26,22 @@ const Sidebar = ({ setCurrentMatrix }) => {
   }
 
   const editMatrix = (id) => {
-    const fMatrixes = matrixes.filter(matrix => matrix.id !== id)
-    const fMatrixIndex = matrixes.findIndex(matrix => matrix.id === id)
 
-    matrixes[fMatrixIndex].name = title
+    if (title.length > 3) {
+      const fMatrixes = matrixes.filter(matrix => matrix.id !== id)
+      const fMatrixIndex = matrixes.findIndex(matrix => matrix.id === id)
+  
+      matrixes[fMatrixIndex].name = title
+  
+      localStorage.setItem("matrixes", JSON.stringify([...fMatrixes, matrixes[fMatrixIndex]]))
+      localStorage.setItem(id, JSON.stringify([matrixes[fMatrixIndex]]))
+  
+      setEditing({})
+      setTitle("")
+    } else  {
+      console.log("Title must be at least 3 characters long")
+    }
 
-    localStorage.setItem("matrixes", JSON.stringify([...fMatrixes, matrixes[fMatrixIndex]]))
-    localStorage.setItem(id, JSON.stringify([matrixes[fMatrixIndex]]))
-
-    setEditing({})
-    setTitle("")
   }
 
   return (
