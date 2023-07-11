@@ -38,7 +38,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
   
       setEditing({})
       setTitle("")
-    } else  {
+    } else {
       console.log("Title must be at least 3 characters long")
     }
 
