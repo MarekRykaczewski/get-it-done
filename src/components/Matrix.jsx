@@ -4,8 +4,6 @@ import Section from "./Section"
 
 const Matrix = ({ currentMatrix }) => {
 
-  console.log(currentMatrix)
-
   const [tasks, setTasks] = useState([])
 
   const [tasksDo, setTasksDo] = useState([])

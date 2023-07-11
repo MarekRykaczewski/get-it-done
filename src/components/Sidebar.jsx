@@ -38,8 +38,6 @@ const Sidebar = ({ setCurrentMatrix }) => {
     setTitle("")
   }
 
-  console.log(editing)
-
   return (
     <nav className="flex xl:h-[100vh] min-w-fit w-full flex-col p-6 bg-slate-200">
         <h1 className='text-xl font-bold text-center mb-5'> Get it done </h1>
