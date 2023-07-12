@@ -35,7 +35,7 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
   const handleEdit = () => {
     task.name = title
 
-    if (title.length > 3) {
+    if (!title.length < 3) {
       const fTasks = tasks.filter(task => task.id !== id)
       const newTasks = [...fTasks, task]
   
