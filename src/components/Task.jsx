@@ -37,10 +37,10 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
 
     if (!title.length < 3) {
       const fTasks = tasks.filter(task => task.id !== id)
-      const newTasks = [...fTasks, task]
+      fTasks.unshift(task)
   
-      setTasks(newTasks)
-      localStorage.setItem(currentMatrix.id, JSON.stringify(tasks))
+      setTasks(fTasks)
+      localStorage.setItem(currentMatrix.id, JSON.stringify(fTasks))
       setEditing(false)
     } else {
       console.log("Task name must be at least 3 characters long!")
