@@ -6,7 +6,7 @@ const CreateTask = ({ currentMatrix, tasks, setTasks }) => {
   const TASK_TEMPLATE = {
     id: "",
     name: "",
-    done: false,
+    completed: false,
     category: "do" // do, decide, delegate, delete
   }
 

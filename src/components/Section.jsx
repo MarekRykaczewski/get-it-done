@@ -40,6 +40,7 @@ const Section = ({ currentMatrix, tasks, setTasks, color, position, category }) 
         tasks={tasks}
         setTasks={setTasks}
         text={task.name}
+        completed={task.completed}
       /> 
     ))}
   </div>
