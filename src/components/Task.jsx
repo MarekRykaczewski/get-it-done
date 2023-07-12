@@ -61,21 +61,21 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
         </div>
         <div className="flex items-center gap-1">
             <button 
-              className={`${editing[task.id] && "hidden"} px-3 bg-cyan-500 rounded-md text-white`}
+              className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
               onClick={() => setEditing({ [id]: true })}
             >
-              Edit 
+              ✏️ 
             </button>
             <button 
               onClick={() => handleRemove(id)} 
-              className={`${editing[task.id] && "hidden"} px-3 bg-red-500 rounded-md text-white`}> 
-              Delete 
+              className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}> 
+              🗑️
             </button>
             <button
               onClick={() => handleEdit()}
-              className={`${!editing[task.id] && "hidden"} px-3 bg-green-500 hover:bg-green-400 transition font-bold rounded-md text-white`}
+              className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
             >
-              Confirm
+              💾
             </button>
         </div>
     </div>
