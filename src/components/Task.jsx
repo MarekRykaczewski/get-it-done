@@ -35,12 +35,16 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
   const handleEdit = () => {
     task.name = title
 
-    const fTasks = tasks.filter(task => task.id !== id)
-    const newTasks = [...fTasks, task]
-
-    setTasks(newTasks)
-    localStorage.setItem(currentMatrix.id, JSON.stringify(tasks))
-    setEditing(false)
+    if (title.length > 3) {
+      const fTasks = tasks.filter(task => task.id !== id)
+      const newTasks = [...fTasks, task]
+  
+      setTasks(newTasks)
+      localStorage.setItem(currentMatrix.id, JSON.stringify(tasks))
+      setEditing(false)
+    } else {
+      console.log("Task name must be at least 3 characters long!")
+    }
   }
 
   return (
