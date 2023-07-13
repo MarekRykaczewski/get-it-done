@@ -26,7 +26,6 @@ const Sidebar = ({ setCurrentMatrix }) => {
   }
 
   const editMatrix = (id) => {
-
     if (title.length > 3) {
       const fMatrixes = matrixes.filter(matrix => matrix.id !== id)
       const fMatrixIndex = matrixes.findIndex(matrix => matrix.id === id)
@@ -34,7 +33,6 @@ const Sidebar = ({ setCurrentMatrix }) => {
       matrixes[fMatrixIndex].name = title
   
       localStorage.setItem("matrixes", JSON.stringify([...fMatrixes, matrixes[fMatrixIndex]]))
-      localStorage.setItem(id, JSON.stringify([matrixes[fMatrixIndex]]))
   
       setEditing({})
       setTitle("")
