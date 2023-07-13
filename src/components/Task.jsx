@@ -5,21 +5,16 @@ export const ItemTypes = {
   TASK: 'task'
 }
 
-const Task = ({ currentMatrix, toggleComplete, text, completed, tasks, setTasks, id }) => {
+const Task = ({ currentMatrix, handleRemove, handleEdit, toggleComplete, text, completed, tasks, setTasks, id }) => {
 
   const [editing, setEditing] = useState({})
   const [task, setTask] = useState({})
-  const [title, setTitle] = useState("")
+  const [name, setName] = useState("")
 
   useEffect(() => {
     const fTask = tasks.filter(task => task.id === id)
     setTask(...fTask)
   }, [tasks, id])
-
-  // useEffect(() => {
-  //   const fTask = tasks.find(task => task.id === id);
-  //   setTask(fTask);
-  // }, [tasks, id]);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.TASK,
@@ -29,31 +24,17 @@ const Task = ({ currentMatrix, toggleComplete, text, completed, tasks, setTasks,
     })
   }))
 
-  const handleRemove = (id) => {
-    const fTasks = tasks.filter(task => task.id !== id)
-
-    localStorage.setItem(currentMatrix.id, JSON.stringify(fTasks))
-
-    setTasks(fTasks)
-  }
-
-  const handleEdit = () => {
-    task.name = title
-
-    if (!title.length < 3) {
-      const fTasks = tasks.filter(task => task.id !== id)
-      fTasks.unshift(task)
-  
-      setTasks(fTasks)
-      localStorage.setItem(currentMatrix.id, JSON.stringify(fTasks))
-      setEditing({})
-    } else {
-      console.log("Task name must be at least 3 characters long!")
-    }
-  }
-
   const handleToggleComplete = () => {
     toggleComplete(id)
+  }
+
+  const handleSave = () => {
+    if (name.length >= 3) {
+      handleEdit(id, name);
+      setEditing(false);
+    } else {
+      console.log("Task name must be at least 3 characters long!");
+    }
   }
 
   return (
@@ -69,7 +50,7 @@ const Task = ({ currentMatrix, toggleComplete, text, completed, tasks, setTasks,
               className={`${!editing[task.id] && "hidden"} w-full shadow-md bg-slate-100 rounded-md mx-2 px-1`} 
               type='text' 
               placeholder={text}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             /> 
         </div>
         <div className="flex items-center gap-1">
@@ -85,7 +66,7 @@ const Task = ({ currentMatrix, toggleComplete, text, completed, tasks, setTasks,
               🗑️
             </button>
             <button
-              onClick={() => handleEdit()}
+              onClick={() => handleSave()}
               className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
             >
               💾
