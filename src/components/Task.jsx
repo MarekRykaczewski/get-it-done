@@ -5,7 +5,7 @@ export const ItemTypes = {
   TASK: 'task'
 }
 
-const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
+const Task = ({ currentMatrix, toggleComplete, text, completed, tasks, setTasks, id }) => {
 
   const [editing, setEditing] = useState({})
   const [task, setTask] = useState({})
@@ -14,7 +14,12 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
   useEffect(() => {
     const fTask = tasks.filter(task => task.id === id)
     setTask(...fTask)
-  }, [])
+  }, [tasks, id])
+
+  // useEffect(() => {
+  //   const fTask = tasks.find(task => task.id === id);
+  //   setTask(fTask);
+  // }, [tasks, id]);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.TASK,
@@ -41,10 +46,14 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
   
       setTasks(fTasks)
       localStorage.setItem(currentMatrix.id, JSON.stringify(fTasks))
-      setEditing(false)
+      setEditing({})
     } else {
       console.log("Task name must be at least 3 characters long!")
     }
+  }
+
+  const handleToggleComplete = () => {
+    toggleComplete(id)
   }
 
   return (
@@ -53,9 +62,9 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
         <input 
           className={`${editing[task.id] && "hidden"}`} 
           type="checkbox" 
-          checked={task.completed}
+          onChange={handleToggleComplete}
         />
-            <p className={`${editing[task.id] && "hidden"}`}>{text}</p>
+            <p className={`${editing[task.id] && "hidden"} ${task.completed && "font-bold"}`}>{text}</p>
             <input 
               className={`${!editing[task.id] && "hidden"} w-full shadow-md bg-slate-100 rounded-md mx-2 px-1`} 
               type='text' 
