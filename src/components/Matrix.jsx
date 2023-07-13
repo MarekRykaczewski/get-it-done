@@ -57,6 +57,7 @@ const Matrix = ({ currentMatrix }) => {
         <Section 
           key={`do_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
+          setTasks={setTasks}
           tasks={tasksDo} 
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
@@ -69,6 +70,7 @@ const Matrix = ({ currentMatrix }) => {
         <Section
           key={`decide_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
+          setTasks={setTasks}
           tasks={tasksDecide} 
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
@@ -81,6 +83,7 @@ const Matrix = ({ currentMatrix }) => {
         <Section 
           key={`delegate_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
+          setTasks={setTasks}
           tasks={tasksDelegate} 
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
@@ -93,6 +96,7 @@ const Matrix = ({ currentMatrix }) => {
         <Section 
           key={`delete_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
+          setTasks={setTasks}
           tasks={tasksDelete} 
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
