@@ -38,14 +38,14 @@ const Task = ({ currentMatrix, handleRemove, handleEdit, toggleComplete, text, c
   }
 
   return (
-    <div ref={drag} className={`${completed && "bg-red-500"} flex p-2 justify-between items-center border ${ isDragging && "opacity-25"} bg-opacity-60 hover:shadow-md transition border-slate-400 bg-slate-100 rounded-md h-12 w-full`}>
+    <div ref={drag} className={`${completed && "bg-red-500"} ${task.completed && "opacity-30"} flex p-2 justify-between items-center border ${ isDragging && "opacity-25"} bg-opacity-60 hover:shadow-md transition border-slate-400 bg-slate-100 rounded-md h-12 w-full`}>
         <div className='flex gap-1 items-center'>
         <input 
           className={`${editing[task.id] && "hidden"}`} 
           type="checkbox" 
           onChange={handleToggleComplete}
         />
-            <p className={`${editing[task.id] && "hidden"} ${task.completed && "font-bold"}`}>{text}</p>
+            <p className={`${editing[task.id] && "hidden"} ${task.completed && "line-through"}`}>{text}</p>
             <input 
               className={`${!editing[task.id] && "hidden"} w-full shadow-md bg-slate-100 rounded-md mx-2 px-1`} 
               type='text' 

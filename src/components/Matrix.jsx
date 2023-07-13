@@ -10,11 +10,6 @@ const Matrix = ({ currentMatrix }) => {
     setTasks(JSON.parse(localStorage.getItem(currentMatrix.id)) || [])
   }, [currentMatrix.id])
 
-  const tasksDo = tasks.filter((task) => task.category === "do");
-  const tasksDecide = tasks.filter((task) => task.category === "decide");
-  const tasksDelegate = tasks.filter((task) => task.category === "delegate");
-  const tasksDelete = tasks.filter((task) => task.category === "delete");
-
   const toggleComplete = (taskId) => {
     const updatedTasks = tasks.map((task) => {
       if (task.id === taskId) {
@@ -44,6 +39,13 @@ const Matrix = ({ currentMatrix }) => {
     localStorage.setItem(currentMatrix.id, JSON.stringify(updatedTasks));
   };
 
+  const positionMap = {
+    do: { col: 1, row: 1, color: 'bg-green-200' },
+    decide: { col: 2, row: 1, color: 'bg-blue-200' },
+    delegate: { col: 1, row: 2, color: 'bg-orange-200' },
+    delete: { col: 2, row: 2, color: 'bg-red-200' },
+  };
+
   return (  
     <div className="flex flex-col items-center gap-5">
       <h1 className='text-xl font-bold'> {currentMatrix.name}</h1>
@@ -54,57 +56,25 @@ const Matrix = ({ currentMatrix }) => {
       />
      <div className='grid auto-cols-min auto-rows-min px-10'>
                 
-        <Section 
-          key={`do_${currentMatrix.id}`}
-          currentMatrix={currentMatrix}
-          setTasks={setTasks}
-          tasks={tasksDo} 
-          toggleComplete={toggleComplete}
-          handleRemove={handleRemove}
-          handleEdit={handleEdit}
-          position='col-start-1 row-start-1'
-          color='bg-green-200'
-          category='do'
-        />
+     {Object.keys(positionMap).map((category) => {
+      const { col, row, color } = positionMap[category];
+      const sectionTasks = tasks.filter((task) => task.category === category);
 
+      return (
         <Section
-          key={`decide_${currentMatrix.id}`}
+          key={`${category}_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           setTasks={setTasks}
-          tasks={tasksDecide} 
+          tasks={sectionTasks}
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
           handleEdit={handleEdit}
-          position='col-start-2 row-start-1'
-          color='bg-blue-200'
-          category='decide'
+          position={`col-start-${col} row-start-${row}`}
+          color={color}
+          category={category}
         />
-
-        <Section 
-          key={`delegate_${currentMatrix.id}`}
-          currentMatrix={currentMatrix}
-          setTasks={setTasks}
-          tasks={tasksDelegate} 
-          toggleComplete={toggleComplete}
-          handleRemove={handleRemove}
-          handleEdit={handleEdit}
-          position='col-start-1 row-start-2'
-          color='bg-orange-200'
-          category='delegate'
-        />
-
-        <Section 
-          key={`delete_${currentMatrix.id}`}
-          currentMatrix={currentMatrix}
-          setTasks={setTasks}
-          tasks={tasksDelete} 
-          toggleComplete={toggleComplete}
-          handleRemove={handleRemove}
-          handleEdit={handleEdit}
-          position='col-start-2 row-start-2'
-          color='bg-red-200'
-          category='delete'
-        />        
+      );
+    })}
         
     </div>
   </div>
