@@ -54,7 +54,7 @@ const Matrix = ({ currentMatrix }) => {
         tasks={tasks} 
         setTasks={setTasks} 
       />
-     <div className='grid auto-cols-min auto-rows-min px-10'>
+     <div className='grid grid-rows-2 grid-cols-2 auto-cols-min auto-rows-min px-10'>
                 
      {Object.keys(positionMap).map((category) => {
       const { col, row, color } = positionMap[category];
