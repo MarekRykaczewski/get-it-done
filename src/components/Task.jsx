@@ -5,7 +5,7 @@ export const ItemTypes = {
   TASK: 'task'
 }
 
-const Task = ({ currentMatrix, handleRemove, handleEdit, toggleComplete, text, completed, tasks, setTasks, id }) => {
+const Task = ({ currentMatrix, handleRemove, handleEdit, toggleComplete, text, completed, tasks, id }) => {
 
   const [editing, setEditing] = useState({})
   const [task, setTask] = useState({})

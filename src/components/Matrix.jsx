@@ -58,7 +58,6 @@ const Matrix = ({ currentMatrix }) => {
           key={`do_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDo} 
-          setTasks={setTasks}
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
           handleEdit={handleEdit}
@@ -71,7 +70,6 @@ const Matrix = ({ currentMatrix }) => {
           key={`decide_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDecide} 
-          setTasks={setTasks}
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
           handleEdit={handleEdit}
@@ -84,7 +82,6 @@ const Matrix = ({ currentMatrix }) => {
           key={`delegate_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDelegate} 
-          setTasks={setTasks}
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
           handleEdit={handleEdit}
@@ -97,7 +94,6 @@ const Matrix = ({ currentMatrix }) => {
           key={`delete_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
           tasks={tasksDelete} 
-          setTasks={setTasks}
           toggleComplete={toggleComplete}
           handleRemove={handleRemove}
           handleEdit={handleEdit}
