@@ -59,7 +59,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
 
             {!editing[matrix.id] ?
             <button 
-            className="w-full px-3"
+            className="w-full h-full px-3"
             onClick={() => setCurrentMatrix(getMatrix(matrix.id))}
             >
             {matrix.name}
