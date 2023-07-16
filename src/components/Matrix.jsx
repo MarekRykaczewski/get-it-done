@@ -10,18 +10,6 @@ const Matrix = ({ currentMatrix }) => {
     setTasks(JSON.parse(localStorage.getItem(currentMatrix.id)) || [])
   }, [currentMatrix.id])
 
-  const toggleComplete = (taskId) => {
-    const updatedTasks = tasks.map((task) => {
-      if (task.id === taskId) {
-        return { ...task, completed: !task.completed };
-      }
-      return task;
-    });
-
-    setTasks(updatedTasks);
-    localStorage.setItem(currentMatrix.id, JSON.stringify(updatedTasks));
-  };
-
   const handleRemove = (id) => {
     const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
@@ -66,7 +54,6 @@ const Matrix = ({ currentMatrix }) => {
           currentMatrix={currentMatrix}
           setTasks={setTasks}
           tasks={sectionTasks}
-          toggleComplete={toggleComplete}
           handleRemove={handleRemove}
           handleEdit={handleEdit}
           position={`col-start-${col} row-start-${row}`}

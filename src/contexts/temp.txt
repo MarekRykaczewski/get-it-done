@@ -1,0 +1,25 @@
+  const handleRemove = (id, matrixId, setTasks, tasks) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+
+    // Update the tasks and store in local storage
+    setTasks(updatedTasks)
+    localStorage.setItem(matrixId, JSON.stringify(updatedTasks));
+    console.log("Handle Remove - Updated Tasks:", updatedTasks);
+  };
+
+  const handleEdit = (id, updatedName, matrixId, setTasks, tasks) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, name: updatedName };
+      }
+      return task;
+    });
+
+    // Update the tasks and store in local storage
+    setTasks(updatedTasks)
+    localStorage.setItem(matrixId, JSON.stringify(updatedTasks));
+    console.log("Handle Edit - Updated Tasks:", updatedTasks);
+  };
+
+    handleRemove,
+    handleEdit,

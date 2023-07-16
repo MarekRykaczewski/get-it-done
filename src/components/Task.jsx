@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useDrag } from 'react-dnd'
+import { TaskContext } from '../contexts/TaskContext'
 
 export const ItemTypes = {
   TASK: 'task'
 }
 
-const Task = ({ currentMatrix, handleRemove, handleEdit, toggleComplete, text, completed, tasks, id }) => {
+const Task = ({ currentMatrix, handleRemove, handleEdit, text, completed, tasks, setTasks, id }) => {
 
   const [editing, setEditing] = useState({})
   const [task, setTask] = useState({})
   const [name, setName] = useState("")
+
+  const { toggleComplete } = useContext(TaskContext);
 
   useEffect(() => {
     const fTask = tasks.filter(task => task.id === id)
@@ -24,9 +27,9 @@ const Task = ({ currentMatrix, handleRemove, handleEdit, toggleComplete, text, c
     })
   }))
 
-  const handleToggleComplete = () => {
-    toggleComplete(id)
-  }
+  const handleToggleComplete = (taskId, matrixId) => {
+    toggleComplete(taskId, matrixId, setTasks, tasks);
+  };
 
   const handleSave = () => {
     if (name.length >= 3) {
@@ -43,7 +46,7 @@ const Task = ({ currentMatrix, handleRemove, handleEdit, toggleComplete, text, c
         <input 
           className={`${editing[task.id] && "hidden"}`} 
           type="checkbox" 
-          onChange={handleToggleComplete}
+          onChange={() => handleToggleComplete(id, currentMatrix.id)}
         />
             <p className={`${editing[task.id] && "hidden"} ${task.completed && "line-through"}`}>{text}</p>
             <input 
