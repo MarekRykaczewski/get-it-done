@@ -10,17 +10,6 @@ const Matrix = ({ currentMatrix }) => {
     setTasks(JSON.parse(localStorage.getItem(currentMatrix.id)) || [])
   }, [currentMatrix.id])
 
-  const handleEdit = (id, updatedName) => {
-    const updatedTasks = tasks.map((task) => {
-      if (task.id === id) {
-        return { ...task, name: updatedName };
-      }
-      return task;
-    });
-    setTasks(updatedTasks);
-    localStorage.setItem(currentMatrix.id, JSON.stringify(updatedTasks));
-  };
-
   const positionMap = {
     do: { col: 1, row: 1, color: 'bg-green-200' },
     decide: { col: 2, row: 1, color: 'bg-blue-200' },
@@ -48,7 +37,6 @@ const Matrix = ({ currentMatrix }) => {
           currentMatrix={currentMatrix}
           setTasks={setTasks}
           tasks={sectionTasks}
-          handleEdit={handleEdit}
           position={`col-start-${col} row-start-${row}`}
           color={color}
           category={category}

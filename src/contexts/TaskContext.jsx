@@ -27,9 +27,24 @@ export const TaskProvider = ({ children }) => {
     console.log("Task Removed - Updated Tasks:", updatedTasks);
   };
 
+  const editTask = (id, matrixId, updatedName, setTasks, tasks) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, name: updatedName };
+      }
+      return task;
+    });
+
+    // Update the tasks and store in local storage
+    setTasks(updatedTasks)
+    localStorage.setItem(matrixId, JSON.stringify(updatedTasks));
+    console.log("Handle Edit - Updated Tasks:", updatedTasks);
+  };
+
   const contextValue = {
     toggleComplete,
-    removeTask
+    removeTask,
+    editTask
   };
 
   return (

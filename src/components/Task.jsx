@@ -6,13 +6,13 @@ export const ItemTypes = {
   TASK: 'task'
 }
 
-const Task = ({ currentMatrix, handleEdit, text, completed, tasks, setTasks, id }) => {
+const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
 
   const [editing, setEditing] = useState({})
   const [task, setTask] = useState({})
   const [name, setName] = useState("")
 
-  const { toggleComplete, removeTask } = useContext(TaskContext);
+  const { toggleComplete, removeTask, editTask } = useContext(TaskContext);
 
   useEffect(() => {
     const fTask = tasks.filter(task => task.id === id)
@@ -35,13 +35,9 @@ const Task = ({ currentMatrix, handleEdit, text, completed, tasks, setTasks, id 
     removeTask(taskId, matrixId, setTasks, tasks)
   }
 
-  const handleSave = () => {
-    if (name.length >= 3) {
-      handleEdit(id, name);
-      setEditing(false);
-    } else {
-      console.log("Task name must be at least 3 characters long!");
-    }
+  const handleEditTask = (id, matrixId, updatedName) => {
+    editTask(id, matrixId, updatedName, setTasks, tasks)
+    setEditing(false);
   }
 
   return (
@@ -73,7 +69,7 @@ const Task = ({ currentMatrix, handleEdit, text, completed, tasks, setTasks, id 
               🗑️
             </button>
             <button
-              onClick={() => handleSave()}
+              onClick={() => handleEditTask(id, currentMatrix.id, name)}
               className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
             >
               💾
