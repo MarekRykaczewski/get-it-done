@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar'
 import './index.css'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import { TaskProvider } from './contexts/TaskContext'
 
 function App() {
 
@@ -11,23 +12,25 @@ function App() {
 
   return (
   <DndProvider backend={HTML5Backend}>  
-    <div className='flex flex-col xl:flex-row h-screen gap-3 items-center justify-between'>
-      <div className='w-full xl:w-1/3'>
-        <Sidebar
-          setCurrentMatrix={setCurrentMatrix} 
-        />
-      </div>
-      <div className='w-full xl:w-2/3'> 
-        {currentMatrix 
-          ? 
-          <Matrix
-            currentMatrix={currentMatrix}
+    <TaskProvider>
+      <div className='flex flex-col xl:flex-row h-screen gap-3 items-center justify-between'>
+        <div className='w-full xl:w-1/3'>
+          <Sidebar
+            setCurrentMatrix={setCurrentMatrix} 
           />
-          : 
-          <p> Create a Matrix </p>
-        }
+        </div>
+        <div className='w-full xl:w-2/3'> 
+          {currentMatrix 
+            ? 
+            <Matrix
+              currentMatrix={currentMatrix}
+            />
+            : 
+            <p> Create a Matrix </p>
+          }
+        </div>
       </div>
-    </div>
+    </TaskProvider>
   </DndProvider>
   )
 }
