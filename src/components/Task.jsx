@@ -6,13 +6,13 @@ export const ItemTypes = {
   TASK: 'task'
 }
 
-const Task = ({ currentMatrix, handleRemove, handleEdit, text, completed, tasks, setTasks, id }) => {
+const Task = ({ currentMatrix, handleEdit, text, completed, tasks, setTasks, id }) => {
 
   const [editing, setEditing] = useState({})
   const [task, setTask] = useState({})
   const [name, setName] = useState("")
 
-  const { toggleComplete } = useContext(TaskContext);
+  const { toggleComplete, removeTask } = useContext(TaskContext);
 
   useEffect(() => {
     const fTask = tasks.filter(task => task.id === id)
@@ -30,6 +30,10 @@ const Task = ({ currentMatrix, handleRemove, handleEdit, text, completed, tasks,
   const handleToggleComplete = (taskId, matrixId) => {
     toggleComplete(taskId, matrixId, setTasks, tasks);
   };
+
+  const handleRemoveTask = (taskId, matrixId) => {
+    removeTask(taskId, matrixId, setTasks, tasks)
+  }
 
   const handleSave = () => {
     if (name.length >= 3) {
@@ -64,7 +68,7 @@ const Task = ({ currentMatrix, handleRemove, handleEdit, text, completed, tasks,
               ✏️ 
             </button>
             <button 
-              onClick={() => handleRemove(id)} 
+              onClick={() => handleRemoveTask(id, currentMatrix.id)} 
               className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}> 
               🗑️
             </button>

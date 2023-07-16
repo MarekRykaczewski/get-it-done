@@ -18,8 +18,18 @@ export const TaskProvider = ({ children }) => {
     console.log("Toggle Complete - Updated Tasks:", updatedTasks);
   };
 
+  const removeTask = (id, matrixId, setTasks, tasks) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+
+    // Update the tasks and store in local storage
+    setTasks(updatedTasks)
+    localStorage.setItem(matrixId, JSON.stringify(updatedTasks));
+    console.log("Task Removed - Updated Tasks:", updatedTasks);
+  };
+
   const contextValue = {
-    toggleComplete
+    toggleComplete,
+    removeTask
   };
 
   return (

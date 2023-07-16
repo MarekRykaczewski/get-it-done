@@ -3,7 +3,7 @@ import { useDrop } from "react-dnd"
 import { ItemTypes } from "./Task"
 
 
-const Section = ({ currentMatrix, handleRemove, handleEdit, tasks, setTasks, color, position, category }) => {
+const Section = ({ currentMatrix, handleEdit, tasks, setTasks, color, position, category }) => {
 
   const [{ isOver }, drop] = useDrop(() => ({
       accept: ItemTypes.TASK,
@@ -41,7 +41,6 @@ const Section = ({ currentMatrix, handleRemove, handleEdit, tasks, setTasks, col
         setTasks={setTasks}
         text={task.name}
         completed={task.completed}
-        handleRemove={handleRemove}
         handleEdit={handleEdit}
       /> 
     ))}
