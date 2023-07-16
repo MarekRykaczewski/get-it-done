@@ -41,10 +41,19 @@ export const TaskProvider = ({ children }) => {
     console.log("Handle Edit - Updated Tasks:", updatedTasks);
   };
 
+  const addTask = (matrixId, newTask, setTasks) => {
+    setTasks((prevTasks) => {
+      const updatedTasks = [...prevTasks, newTask];
+      localStorage.setItem(matrixId, JSON.stringify(updatedTasks));
+      return updatedTasks;
+    });
+  };
+
   const contextValue = {
     toggleComplete,
     removeTask,
-    editTask
+    editTask,
+    addTask
   };
 
   return (

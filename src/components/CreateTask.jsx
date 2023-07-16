@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
+import { TaskContext } from '../contexts/TaskContext'
 
-const CreateTask = ({ currentMatrix, tasks, setTasks }) => {
+const CreateTask = ({ currentMatrix, setTasks }) => {
 
   const TASK_TEMPLATE = {
     id: "",
@@ -10,29 +11,23 @@ const CreateTask = ({ currentMatrix, tasks, setTasks }) => {
     category: "do" // do, decide, delegate, delete
   }
 
+  const { addTask } = useContext(TaskContext);
+
   const [task, setTask] = useState(TASK_TEMPLATE)
 
-  const handleSubmit = (e) => {
+  const handleAddTask = (e) => {
     e.preventDefault()
 
     if (task.name.length < 3) {
       console.log("Task must be at least 3 characters long")
     } else {
-
-      setTasks((prev) => {
-        const list = [...prev, task]
-  
-        localStorage.setItem(currentMatrix.id, JSON.stringify(list))
-  
-        return list
-      })
-  
+      addTask(currentMatrix.id, task, setTasks)  
       setTask(TASK_TEMPLATE)
     }
   }
 
   return (
-    <form className="flex" onSubmit={handleSubmit}>
+    <form className="flex" onSubmit={(e) => handleAddTask(e)}>
       <input 
       type="text" 
       className="border-2 border-slate-400 bg-slate-100 rounded-md mr-4 h-12 w-64 px-1"
