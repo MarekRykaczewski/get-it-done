@@ -34,8 +34,9 @@ const Matrix = ({ currentMatrix }) => {
         <Section
           key={`${category}_${currentMatrix.id}`}
           currentMatrix={currentMatrix}
+          tasks={tasks}
           setTasks={setTasks}
-          tasks={sectionTasks}
+          sectionTasks={sectionTasks}
           position={`col-start-${col} row-start-${row}`}
           color={color}
           category={category}
