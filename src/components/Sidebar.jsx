@@ -44,7 +44,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
 
   return (
     <nav className="flex xl:h-[100vh] min-w-full flex-col py-10 px-20">
-        <h1 className='text-3xl font-logo text-[#435965] font-bold mb-10'> GET IT DONE ✔️ </h1>
+        <h1 className='text-4xl text-center font-logo text-white drop-shadow font-bold mb-10'> GET IT DONE 👔 </h1>
         <CreateMatrix
           matrixes={matrixes}
           setMatrixes={setMatrixes}
@@ -59,7 +59,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
 
             {!editing[matrix.id] ?
             <button 
-            className="w-full h-full px-3 truncate"
+            className="w-full h-full text-slate-800 pl-2 truncate"
             onClick={() => setCurrentMatrix(getMatrix(matrix.id))}
             >
             {matrix.name}

@@ -42,7 +42,7 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
 
   return (
     <div ref={drag} className={`${completed && "bg-red-500"} ${task.completed && "opacity-30"} flex p-2 justify-between items-center border ${ isDragging && "opacity-25"} bg-opacity-60 hover:shadow-md transition border-slate-400 bg-slate-100 rounded-md h-12 w-full`}>
-        <div className='flex gap-1 items-center'>
+        <div className='flex gap-1 items-center text-slate-800'>
         <input 
           className={`${editing[task.id] && "hidden"}`} 
           type="checkbox" 
