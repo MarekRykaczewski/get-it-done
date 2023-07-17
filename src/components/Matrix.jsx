@@ -11,21 +11,20 @@ const Matrix = ({ currentMatrix }) => {
   }, [currentMatrix.id])
 
   const positionMap = {
-    do: { col: 1, row: 1, color: 'bg-green-200' },
-    decide: { col: 2, row: 1, color: 'bg-blue-200' },
-    delegate: { col: 1, row: 2, color: 'bg-orange-200' },
-    delete: { col: 2, row: 2, color: 'bg-red-200' },
+    do: { col: 1, row: 1, color: 'bg-green-300' },
+    decide: { col: 2, row: 1, color: 'bg-blue-300' },
+    delegate: { col: 1, row: 2, color: 'bg-orange-300' },
+    delete: { col: 2, row: 2, color: 'bg-red-300' },
   };
 
   return (  
-    <div className="flex flex-col items-center gap-5">
+    <div className="flex flex-col items-center gap-5 my-10">
       <h1 className='text-xl font-bold'> {currentMatrix.name}</h1>
       <CreateTask 
         currentMatrix={currentMatrix}
-        tasks={tasks} 
         setTasks={setTasks} 
       />
-     <div className='grid grid-rows-2 grid-cols-2 auto-cols-min auto-rows-min px-10'>
+     <div className='grid grid-rows-2 grid-cols-2 px-10 min-w-[800px] min-h-[800px]'>
                 
      {Object.keys(positionMap).map((category) => {
       const { col, row, color } = positionMap[category];
