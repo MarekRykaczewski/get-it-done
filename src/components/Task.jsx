@@ -69,6 +69,12 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
               🗑️
             </button>
             <button
+              onClick={() => setEditing(false)}
+              className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
+            >
+              🚫
+            </button>
+            <button
               onClick={() => handleEditTask(id, currentMatrix.id, name)}
               className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
             >
