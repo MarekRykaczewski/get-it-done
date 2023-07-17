@@ -73,6 +73,12 @@ const Sidebar = ({ setCurrentMatrix }) => {
               onChange={(e) => setTitle(e.target.value)}
               />
               <button 
+              onClick={() => setEditing(false)}
+              className="text-xl hover:bg-slate-200 transition p-2 rounded-full"
+              > 
+              🚫
+              </button>
+              <button 
               onClick={() => editMatrix(matrix.id)}
               className="text-xl hover:bg-slate-200 transition p-2 rounded-full"
               > 
