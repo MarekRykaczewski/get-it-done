@@ -13,8 +13,8 @@ function App() {
   return (
   <DndProvider backend={HTML5Backend}>  
     <TaskProvider>
-      <div className='flex flex-col xl:flex-row gap-3 items-start'>
-        <div className='w-full xl:w-1/3'>
+      <div className='flex flex-col xl:flex-row gap-3 items-start bg-slate-400'>
+        <div className='w-full xl:w-1/3 bg-slate-300'>
           <Sidebar
             setCurrentMatrix={setCurrentMatrix} 
           />
