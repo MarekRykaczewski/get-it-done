@@ -43,13 +43,13 @@ const Sidebar = ({ setCurrentMatrix }) => {
   }
 
   return (
-    <nav className="flex xl:h-[100vh] min-w-full flex-col py-10 px-20">
-        <h1 className='text-4xl text-center font-logo text-white drop-shadow font-bold mb-10'> GET IT DONE 👔 </h1>
+    <nav className="relative flex flex-col px-20">
+        <h1 className='mt-10 text-4xl text-center font-logo text-white drop-shadow font-bold mb-10'> GET IT DONE 👔 </h1>
         <CreateMatrix
           matrixes={matrixes}
           setMatrixes={setMatrixes}
         />
-        <div className="border-2 border-slate-400 rounded-xl flex xl:flex-col p-6 gap-3 xl:max-h-full overflow-y-auto bg-slate-200">
+        <div className="border-2 border-slate-400 xl:max-h-[60vh] rounded-xl flex xl:flex-col p-6 gap-3 overflow-y-auto bg-slate-200">
         {matrixes.map(matrix => (
           <div 
             className="flex items-center justify-between border-2 min-w-[200px] xl:max-w-full border-slate-400 bg-slate-100 rounded-md h-12 px-1"

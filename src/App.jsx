@@ -13,20 +13,20 @@ function App() {
   return (
   <DndProvider backend={HTML5Backend}>  
     <TaskProvider>
-      <div className='flex flex-col xl:flex-row gap-3 items-start bg-slate-400'>
-        <div className='w-full xl:w-1/3 bg-slate-300'>
+      <div className='flex flex-col xl:flex-row w-screen h-screen gap-3 bg-slate-400'>
+        <div className='relative w-full xl:w-1/3 bg-slate-300'>
           <Sidebar
             setCurrentMatrix={setCurrentMatrix} 
           />
         </div>
-        <div className='w-full xl:w-2/3 h-screen bg-slate-200'> 
+        <div className='relative w-full xl:w-2/3 bg-slate-200'> 
           {currentMatrix 
             ? 
             <Matrix
               currentMatrix={currentMatrix}
             />
             : 
-            <div className='flex w-full h-full items-center justify-center'> 
+            <div className='flex w-full h-screen items-center justify-center'> 
              <h1 className='text-2xl text-slate-600 font-bold'> Click on a Matrix or create a new one </h1>
             </div>
           }
