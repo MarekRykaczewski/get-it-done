@@ -18,7 +18,7 @@ const Matrix = ({ currentMatrix }) => {
   };
 
   return (  
-    <div className="flex flex-col items-center gap-5 py-10 h-full">
+    <div className="flex flex-col items-center gap-5 py-10 h-screen">
       <h1 className='text-3xl font-bold text-slate-500 max-w-[800px] drop-shadow truncate'> {currentMatrix.name}</h1>
       <CreateTask 
         currentMatrix={currentMatrix}
