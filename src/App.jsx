@@ -26,7 +26,9 @@ function App() {
               currentMatrix={currentMatrix}
             />
             : 
-            <p> Create a Matrix </p>
+            <div className='flex w-full h-full items-center justify-center'> 
+             <h1 className='text-2xl text-slate-600 font-bold'> Click on a Matrix or create a new one </h1>
+            </div>
           }
         </div>
       </div>

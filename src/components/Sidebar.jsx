@@ -49,7 +49,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
           matrixes={matrixes}
           setMatrixes={setMatrixes}
         />
-        <div className="border-2 border-slate-400 rounded-xl flex xl:flex-col p-3 gap-3 xl:max-h-full overflow-y-auto bg-slate-200">
+        <div className="border-2 border-slate-400 rounded-xl flex xl:flex-col p-6 gap-3 xl:max-h-full overflow-y-auto bg-slate-200">
         {matrixes.map(matrix => (
           <div 
             className="flex items-center justify-between border-2 min-w-[200px] xl:max-w-full border-slate-400 bg-slate-100 rounded-md h-12 px-1"
