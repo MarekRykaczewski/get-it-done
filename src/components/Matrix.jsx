@@ -19,7 +19,7 @@ const Matrix = ({ currentMatrix }) => {
 
   return (  
     <div className="flex flex-col items-center gap-5 my-10">
-      <h1 className='text-3xl font-bold text-slate-500 drop-shadow '> {currentMatrix.name}</h1>
+      <h1 className='text-3xl font-bold text-slate-500 max-w-[800px] drop-shadow truncate'> {currentMatrix.name}</h1>
       <CreateTask 
         currentMatrix={currentMatrix}
         setTasks={setTasks} 
