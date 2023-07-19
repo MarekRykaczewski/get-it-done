@@ -40,15 +40,15 @@ const Popup = () => {
   };
 
   return (
-    <div className='flex flex-col p-5 items-center justify-around w-[300px] h-[200px]'>
-      <div className='w-full flex justify-between'>
-        <h1 className='font-bold text-xl'>Get it done</h1>
-        <button className='border p-1' onClick={handleOpenTab}>Open Matrixes</button>
+    <div className='flex flex-col p-5 items-center justify-around w-[300px] h-[200px] bg-slate-300'>
+      <div className='w-full flex flex-col gap-3 items-center justify-between'>
+        <h1 className='font-logo font-bold text-white drop-shadow text-3xl'>GET IT DONE 👔</h1>
+        <button className='bg-cyan-500 rounded-md px-4 py-1 text-white' onClick={handleOpenTab}>Open Matrixes</button>
       </div>
       
       <form onSubmit={(e) => handleSubmit(e)} className='flex items-center flex-col gap-2'>
         <div className='flex justify-around'>
-          <input onChange={(e) => setNewTask(e.target.value)} className='border' type="text" />
+          <input placeholder='Add a new task' onChange={(e) => setNewTask(e.target.value)} className='border-2 border-slate-400 bg-slate-100 rounded-md mr-4 py-1 pl-2 px-1' type="text" />
           <select onChange={handleSelectChange}>
           {matrixes.map((matrix) => (
             <option key={matrix.id} value={matrix.id}>
@@ -57,7 +57,7 @@ const Popup = () => {
           ))}
           </select>
         </div>
-        <button className='w-full border p-1'>Add to Matrix</button>
+        <button className='w-full bg-cyan-500 rounded-md px-4 py-1 text-white'>Add to Matrix</button>
       </form>
     </div>
   );
