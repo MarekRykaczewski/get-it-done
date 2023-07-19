@@ -48,7 +48,7 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
           type="checkbox" 
           onChange={() => handleToggleComplete(id, currentMatrix.id)}
         />
-            <p className={`${editing[task.id] && "hidden"} ${task.completed && "line-through"}`}>{text}</p>
+            <p className={`text-lg ${editing[task.id] && "hidden"} ${task.completed && "line-through"}`}>{text}</p>
             <input 
               className={`${!editing[task.id] && "hidden"} w-full shadow-md bg-slate-100 rounded-md mx-2 px-1`} 
               type='text' 

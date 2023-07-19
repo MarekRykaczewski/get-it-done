@@ -30,12 +30,12 @@ const CreateTask = ({ currentMatrix, setTasks }) => {
     <form className="flex" onSubmit={(e) => handleAddTask(e)}>
       <input 
       type="text" 
-      className="border-2 border-slate-400 bg-slate-100 rounded-md mr-4 pl-2 h-12 w-64 px-1"
+      className="border-2 border-slate-400 text-lg bg-slate-100 rounded-md mr-4 pl-2 h-12 w-64 px-1"
       value={task.name}
       onChange={(e) => setTask({...task, id: uuidv4(), name: e.target.value})}
       placeholder="Create a new Task..." 
       />
-      <button className="bg-cyan-500 rounded-md px-4 h-12 text-white">
+      <button className="bg-cyan-500 text-md text-lg rounded-md px-4 h-12 text-white">
         Create
       </button>
     </form>

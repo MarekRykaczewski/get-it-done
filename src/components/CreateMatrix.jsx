@@ -35,12 +35,12 @@ const CreateMatrix = ({ matrixes, setMatrixes }) => {
     <form className="flex self-center mb-10" onSubmit={handleSubmit}>
       <input 
       type="text" 
-      className="border-2 border-slate-400 bg-slate-100 rounded-md pl-2 mr-4 h-12 w-64 px-1"
+      className="border-2 border-slate-400 bg-slate-100 text-lg rounded-md pl-2 mr-4 h-12 w-64 px-1"
       value={matrix.name}
       onChange={(e) => setMatrix({...matrix, id: uuidv4(), name: e.target.value})} 
       placeholder="Create a new Matrix..."
       />
-      <button className="bg-cyan-500 rounded-md px-4 h-12 text-white">
+      <button className="bg-cyan-500 text-lg rounded-md px-4 h-12 text-white">
         Create
       </button>
     </form>  
