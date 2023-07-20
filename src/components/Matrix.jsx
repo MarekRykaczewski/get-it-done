@@ -24,7 +24,7 @@ const Matrix = ({ currentMatrix }) => {
         currentMatrix={currentMatrix}
         setTasks={setTasks} 
       />
-     <div className='grid grid-rows-2 grid-cols-2 px-10 w-3/4 h-3/4'>
+     <div className='grid grid-rows-2 grid-cols-2 w-3/4 h-3/4'>
                 
      {Object.keys(positionMap).map((category) => {
       const { col, row, color } = positionMap[category];
