@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { useDrag } from 'react-dnd'
 import { TaskContext } from '../contexts/TaskContext'
+import Modal from './Modal'
 
 export const ItemTypes = {
   TASK: 'task'
@@ -11,6 +12,8 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
   const [editing, setEditing] = useState({})
   const [task, setTask] = useState({})
   const [name, setName] = useState("")
+
+  const [reminderModal, setReminderModal] = useState(false)
 
   const { toggleComplete, removeTask, editTask } = useContext(TaskContext);
 
@@ -63,6 +66,22 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
             >
               ✏️ 
             </button>
+            <button 
+              className={`${editing[task.id] && "hidden"} relative text-xl hover:bg-slate-200 transition p-2 rounded-full`}
+              onClick={() => setReminderModal(true)}
+            >
+              🗓️
+            </button>
+            <Modal open={reminderModal}>
+              <div className='flex flex-col gap-3 mb-3'>
+                <h1 className='font-bold text-center text-2xl'>Set a reminder</h1>
+                <input className='border rounded-lg border-black p-1' type="datetime-local" />
+                <div className='flex w-full justify-around'>
+                  <button className='bg-cyan-500 text-md text-lg rounded-md px-4 h-12 text-white' onClick={() => setReminderModal(false)}>Confirm</button>
+                  <button className='bg-red-500 text-md text-lg rounded-md px-4 h-12 text-white' onClick={() => setReminderModal(false)}>Cancel</button>
+                </div>
+              </div>
+            </Modal>
             <button 
               onClick={() => handleRemoveTask(id, currentMatrix.id)} 
               className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}> 
