@@ -9,6 +9,9 @@
     },
 
     "permissions": [
-      "tabs"
+      "tabs",
+      "alarms",    
+      "notifications",       
+      "storage"      
     ]
   }
