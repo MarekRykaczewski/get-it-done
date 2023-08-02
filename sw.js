@@ -23,7 +23,9 @@ self.addEventListener('message', (event) => {
   });
   
 self.addEventListener('notificationclick', (event) => {
-    // Handle the action when the user clicks the notification
-    // You can add the desired action here.
-    event.notification.close();
-  });
+  event.waitUntil(
+    // Open the extension's main page when the notification is clicked
+    clients.openWindow('index.html')
+      .then(() => event.notification.close())
+  );
+});
