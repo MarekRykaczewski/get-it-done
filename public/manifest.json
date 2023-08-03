@@ -8,10 +8,15 @@
       "default_popup": "popup.html"
     },
 
+    "background": {
+      "service_worker": "/dist/background.js"
+    },
+
     "permissions": [
       "tabs",
       "alarms",    
       "notifications",       
-      "storage"      
+      "storage",
+      "background"      
     ]
   }
