@@ -18,13 +18,13 @@ const Matrix = ({ currentMatrix }) => {
   };
 
   return (  
-    <div className="flex flex-col items-center gap-5 py-10 h-screen">
+    <div className="flex flex-col items-center gap-5 px-10 py-10 h-screen">
       <h1 className='text-3xl font-bold text-slate-500 max-w-[800px] drop-shadow truncate'> {currentMatrix.name}</h1>
       <CreateTask 
         currentMatrix={currentMatrix}
         setTasks={setTasks} 
       />
-     <div className='grid grid-rows-2 grid-cols-2 w-3/4 h-3/4'>
+     <div className='grid grid-rows-2 grid-cols-2 w-full aspect-square'>
                 
      {Object.keys(positionMap).map((category) => {
       const { col, row, color } = positionMap[category];
