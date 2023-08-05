@@ -31,7 +31,7 @@ const Section = ({ currentMatrix, sectionTasks, tasks, setTasks, color, position
   }
 
   return (
-    <div ref={drop} className={`flex flex-col p-3 gap-2 items-center justify-center ${position} ${color} w-full h-full `}>
+    <div ref={drop} className={`flex flex-col p-6 gap-2 items-center justify-center ${position} ${color} max-h-full overflow-y-auto`}>
     {sectionTasks.map(task => (
       <Task 
         currentMatrix={currentMatrix}
