@@ -95,65 +95,65 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
 
   return (
     <div ref={drag} className={`${completed && "bg-red-500"} ${task.completed && "opacity-30"} flex p-2 justify-between items-center border ${ isDragging && "opacity-25"} bg-opacity-80 hover:shadow-md transition border-slate-400 bg-slate-100 rounded-md h-12 w-full`}>
-        <div className='flex gap-1 items-center text-slate-800'>
-        <input 
-          className={`${editing[task.id] && "hidden"}`} 
-          type="checkbox" 
-          onChange={() => handleToggleComplete(id, currentMatrix.id)}
-        />
-            <p className={`text-lg ${editing[task.id] && "hidden"} ${task.completed && "line-through"}`}>{text}</p>
+        <div className='flex justify-around gap-1 w-full items-center text-slate-800'>
+            <input 
+              className={`mr-auto ${editing[task.id] && "hidden"}`} 
+              type="checkbox" 
+              onChange={() => handleToggleComplete(id, currentMatrix.id)}
+            />
+            <p className={`mr-auto text-lg text-ellipsis overflow-hidden ${editing[task.id] && "hidden"} ${task.completed && "line-through"}`}>{text}</p>
             <input 
               className={`${!editing[task.id] && "hidden"} w-full shadow-md bg-slate-100 rounded-md mx-2 px-1`} 
               type='text' 
               placeholder={text}
               onChange={(e) => setName(e.target.value)}
             /> 
-        </div>
-        <div className="flex items-center gap-1">
-            <button 
-              className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
-              onClick={() => setEditing({ [id]: true })}
-            >
-              ✏️ 
-            </button>
-            <button 
-              className={`${editing[task.id] && "hidden"} relative text-xl hover:bg-slate-200 transition p-2 rounded-full`}
-              onClick={() => setReminderModal(true)}
-            >
-              🗓️
-            </button>
-            <Modal open={reminderModal}>
-              <div className='flex flex-col gap-3 mb-3'>
-                <h1 className='font-bold text-center text-2xl'>Set a reminder</h1>
-                <input 
-                  className='border rounded-lg border-black p-1' 
-                  type="datetime-local" 
-                  value={reminderDateTime}
-                  onChange={(e) => setReminderDateTime(e.target.value)}
-                />
-                <div className='flex w-full justify-around'>
-                  <button className='bg-cyan-500 text-md text-lg rounded-md px-4 h-12 text-white' onClick={() => saveReminder()}>Confirm</button>
-                  <button className='bg-red-500 text-md text-lg rounded-md px-4 h-12 text-white' onClick={() => setReminderModal(false)}>Cancel</button>
+            <div className='flex'>
+              <button 
+                className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
+                onClick={() => setEditing({ [id]: true })}
+              >
+                ✏️ 
+              </button>
+              <button 
+                className={`${editing[task.id] && "hidden"} relative text-xl hover:bg-slate-200 transition p-2 rounded-full`}
+                onClick={() => setReminderModal(true)}
+              >
+                🗓️
+              </button>
+              <Modal open={reminderModal}>
+                <div className='flex flex-col gap-3 mb-3'>
+                  <h1 className='font-bold text-center text-2xl'>Set a reminder</h1>
+                  <input 
+                    className='border rounded-lg border-black p-1' 
+                    type="datetime-local" 
+                    value={reminderDateTime}
+                    onChange={(e) => setReminderDateTime(e.target.value)}
+                  />
+                  <div className='flex w-full justify-around'>
+                    <button className='bg-cyan-500 text-md text-lg rounded-md px-4 h-12 text-white' onClick={() => saveReminder()}>Confirm</button>
+                    <button className='bg-red-500 text-md text-lg rounded-md px-4 h-12 text-white' onClick={() => setReminderModal(false)}>Cancel</button>
+                  </div>
                 </div>
-              </div>
-            </Modal>
-            <button 
-              onClick={() => handleRemoveTask(id, currentMatrix.id)} 
-              className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}> 
-              🗑️
-            </button>
-            <button
-              onClick={() => setEditing(false)}
-              className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
-            >
-              🚫
-            </button>
-            <button
-              onClick={() => handleEditTask(id, currentMatrix.id, name)}
-              className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
-            >
-              💾
-            </button>
+              </Modal>
+              <button 
+                onClick={() => handleRemoveTask(id, currentMatrix.id)} 
+                className={`${editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}> 
+                🗑️
+              </button>
+              <button
+                onClick={() => setEditing(false)}
+                className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
+              >
+                🚫
+              </button>
+              <button
+                onClick={() => handleEditTask(id, currentMatrix.id, name)}
+                className={`${!editing[task.id] && "hidden"} text-xl hover:bg-slate-200 transition p-2 rounded-full`}
+              >
+                💾
+              </button>
+            </div>
         </div>
     </div>
   )
