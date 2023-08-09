@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
-const CreateMatrix = ({ matrixes, setMatrixes }) => {
+const CreateMatrix = ({ setMatrixes }) => {
 
   const MATRIX_TEMPLATE = {
     id: "",
@@ -12,8 +12,6 @@ const CreateMatrix = ({ matrixes, setMatrixes }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    console.log(matrix)
 
     if (matrix.name.length < 3) {
       console.log("Matrix name must be at least 3 characters long")
