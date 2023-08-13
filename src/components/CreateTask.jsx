@@ -5,7 +5,7 @@ import { TaskContext } from '../contexts/TaskContext'
 const CreateTask = ({ currentMatrix, setTasks }) => {
 
   const TASK_TEMPLATE = {
-    id: "",
+    id: uuidv4(),
     name: "",
     completed: false,
     category: "do" // do, decide, delegate, delete
