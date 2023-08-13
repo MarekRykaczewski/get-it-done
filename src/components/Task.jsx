@@ -15,7 +15,7 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
 
   const [reminderModal, setReminderModal] = useState(false)
   const [reminderDateTime, setReminderDateTime] = useState('');
-  const [reminderDescription, setReminderDescription] = useState('test');
+  const [reminderDescription, setReminderDescription] = useState(text);
 
   const { toggleComplete, removeTask, editTask } = useContext(TaskContext);
 
