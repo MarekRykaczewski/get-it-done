@@ -88,6 +88,7 @@ const Task = ({ currentMatrix, text, completed, tasks, setTasks, id }) => {
           [channel.port2]
         );
       });
+      setReminderModal(false)
     } else {
       console.log('Service Worker or MessageChannel is not supported.');
     }
