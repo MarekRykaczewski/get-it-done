@@ -55,7 +55,7 @@ const ReminderModal = ({ open, onClose }) => {
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open}>
       <div className="flex flex-col gap-3 mb-3">
         <h1 className="font-bold text-center text-2xl">Set a reminder</h1>
         <h2>Date</h2>
