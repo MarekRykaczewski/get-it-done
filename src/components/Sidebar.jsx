@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import CreateMatrix from "./CreateMatrix"
 import Modal from "./Modal"
+import SettingsModal from "./SettingsModal"
 
 const Sidebar = ({ setCurrentMatrix }) => {
 
@@ -8,6 +9,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
   const [editing, setEditing] = useState(false)
   const [title, setTitle] = useState("")
   const [guideModal, setGuideModal] = useState(false)
+  const [settingsModal, setSettingsModal] = useState(false)
 
   useEffect(() => {
     setMatrixes(JSON.parse(localStorage.getItem("matrixes")) || [])
@@ -77,6 +79,9 @@ const Sidebar = ({ setCurrentMatrix }) => {
             <button onClick={() => setGuideModal(false)} className='absolute p-2 top-1 right-1'> ❌ </button>
           </div>
           </Modal>
+
+          <button onClick={() => setSettingsModal(true)} className='text-3xl text-slate-500 transition rounded-full p-2 hover:bg-slate-200'> ⚙️ </button>
+          <SettingsModal open={settingsModal} onClose={() => setSettingsModal(!settingsModal)} />
 
         </div>
         <CreateMatrix
