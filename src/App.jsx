@@ -15,7 +15,7 @@ function App() {
   <DndProvider backend={HTML5Backend}>
     <SettingsProvider>
       <TaskProvider>
-        <div className='flex flex-col xl:flex-row w-screen h-screen gap-3'>
+        <div className='flex flex-col xl:flex-row w-screen h-screen'>
         <div className='relative w-full xl:w-1/3'>
           <Sidebar
             setCurrentMatrix={setCurrentMatrix} 
