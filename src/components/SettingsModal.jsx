@@ -1,6 +1,15 @@
+import { useSettings } from "../contexts/SettingsContext"
 import Modal from "./Modal"
 
 const SettingsModal = ({ open, onClose }) => {
+
+  const { settings, setSettings } = useSettings()
+
+  const handleDarkModeChange = (event) => {
+    const newSettings = { ...settings, darkMode: event.target.checked };
+    setSettings(newSettings);
+  };
+
   return (
     <Modal open={open}>
 
@@ -15,8 +24,13 @@ const SettingsModal = ({ open, onClose }) => {
     <h1 className="text-xl font-bold text-gray-500 mb-2 mt-2"> Theme </h1>
     
     <div className="flex gap-3">
-      <label htmlFor="show_progress"> Dark Mode </label>
-      <input id="show_progress" type="checkbox" />
+      <label htmlFor="dark_mode"> Dark Mode </label>
+      <input 
+        id="dark_mode" 
+        type="checkbox" 
+        checked={settings.darkMode}
+        onChange={handleDarkModeChange}
+      />
     </div>
 
     <div className="flex gap-3 items-center">
