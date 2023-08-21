@@ -1,8 +1,11 @@
 import { useContext, useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 import { TaskContext } from '../contexts/TaskContext'
+import { useSettings } from "../contexts/SettingsContext";
 
 const CreateTask = ({ currentMatrix, setTasks }) => {
+
+  const { settings } = useSettings()
 
   const TASK_TEMPLATE = {
     id: uuidv4(),
@@ -38,7 +41,7 @@ const CreateTask = ({ currentMatrix, setTasks }) => {
     <form className="flex" onSubmit={(e) => handleAddTask(e)}>
       <input 
       type="text" 
-      className="border-2 border-slate-400 text-lg bg-slate-100 rounded-md mr-4 pl-2 h-12 w-64 px-1"
+      className={`border-2 border-slate-400 text-lg ${settings.darkMode ? "bg-slate-500 text-white" : "bg-slate-100 text-slate-800"} transition-colors duration-500 rounded-md mr-4 pl-2 h-12 w-64 px-1`}
       value={task.name}
       onChange={handleTaskNameChange}
       placeholder="Create a new Task..." 

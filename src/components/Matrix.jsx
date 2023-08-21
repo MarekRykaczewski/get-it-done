@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import CreateTask from "./CreateTask"
 import Section from "./Section"
+import { useSettings } from "../contexts/SettingsContext"
 
 const Matrix = ({ currentMatrix }) => {
 
   const [tasks, setTasks] = useState([])
   const [showSearchBar, setShowSearchBar] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const { settings } = useSettings()
 
   const filteredTasks = tasks.filter((task) =>
       task.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -31,8 +33,8 @@ const Matrix = ({ currentMatrix }) => {
   };
 
   return (  
-    <div className="flex flex-col items-center justify-center gap-5 py-5 px-10 h-full">
-      <h1 className='text-3xl font-bold text-slate-500 max-w-[800px] drop-shadow'> {currentMatrix.name}</h1>
+    <div className={`flex flex-col items-center justify-center gap-5 py-5 px-10 h-full ${settings.darkMode ? "bg-slate-700" : "bg-slate-200"} transition-colors duration-500`}>
+      <h1 className={`text-3xl font-bold ${settings.darkMode ? "text-slate-100" : "text-slate-500"} transition-colors duration-500 max-w-[800px] drop-shadow`}> {currentMatrix.name}</h1>
       
       <div className="flex gap-4 items-center">
         <CreateTask 

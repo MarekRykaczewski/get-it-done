@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import CreateMatrix from "./CreateMatrix"
 import SettingsModal from "./SettingsModal"
 import GuideModal from "./GuideModal"
+import { useSettings } from "../contexts/SettingsContext"
 
 const Sidebar = ({ setCurrentMatrix }) => {
 
@@ -10,6 +11,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
   const [title, setTitle] = useState("")
   const [guideModal, setGuideModal] = useState(false)
   const [settingsModal, setSettingsModal] = useState(false)
+  const { settings } = useSettings()
 
   useEffect(() => {
     setMatrixes(JSON.parse(localStorage.getItem("matrixes")) || [])
@@ -47,7 +49,7 @@ const Sidebar = ({ setCurrentMatrix }) => {
   }
 
   return (
-    <nav className="relative flex flex-col px-20">
+    <nav className={`relative flex flex-col px-20 ${settings.darkMode ? "bg-slate-900" : "bg-slate-300"} transition-colors duration-500 h-full`}>
         <div className="flex w-full justify-center items-center gap-3">
           <h1 className='mt-10 text-4xl text-center font-logo text-white drop-shadow font-bold mb-10'> GET IT DONE 👔 </h1>
           
@@ -62,17 +64,17 @@ const Sidebar = ({ setCurrentMatrix }) => {
           matrixes={matrixes}
           setMatrixes={setMatrixes}
         />
-        <div className={`border-2 ${!matrixes.length && "hidden"} border-slate-400 xl:max-h-[60vh] rounded-xl flex xl:flex-col xl:mb-0 mb-10 p-6 gap-3 overflow-y-auto bg-slate-200`}>
+        <div className={`border-2 ${!matrixes.length && "hidden"} border-slate-400 xl:max-h-[60vh] rounded-xl flex xl:flex-col xl:mb-0 mb-10 p-6 gap-3 overflow-y-auto ${settings.darkMode ? "bg-slate-800" : "bg-slate-200"} transition-colors duration-500`}>
         {matrixes.map(matrix => (
           <div 
-            className="flex items-center justify-between text-lg border-2 min-w-[200px] xl:max-w-full border-slate-400 bg-slate-100 rounded-md h-12 px-1"
+            className={`flex items-center justify-between text-lg border-2 min-w-[200px] xl:max-w-full border-slate-400 ${settings.darkMode ? "bg-slate-500 text-white" : "bg-slate-100"} transition-colors duration-500 rounded-md h-12 px-1`}
             key={matrix.id} 
             id={matrix.id}
           >
 
             {!editing[matrix.id] ?
             <button 
-            className="w-full h-full text-slate-800 pl-2 truncate"
+            className={`w-full h-full ${settings.darkMode ? "text-white" : "text-slate-800"} transition-colors duration-500 pl-2 truncate`}
             onClick={() => setCurrentMatrix(getMatrix(matrix.id))}
             >
             {matrix.name}

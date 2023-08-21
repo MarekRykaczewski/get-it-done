@@ -5,21 +5,23 @@ import './index.css'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { TaskProvider } from './contexts/TaskContext'
+import { SettingsProvider } from './contexts/SettingsContext';
 
 function App() {
 
   const [currentMatrix, setCurrentMatrix] = useState("")
 
   return (
-  <DndProvider backend={HTML5Backend}>  
-    <TaskProvider>
-      <div className='flex flex-col xl:flex-row w-screen h-screen gap-3 bg-slate-400'>
-        <div className='relative w-full xl:w-1/3 bg-slate-300'>
+  <DndProvider backend={HTML5Backend}>
+    <SettingsProvider>
+      <TaskProvider>
+        <div className='flex flex-col xl:flex-row w-screen h-screen gap-3'>
+        <div className='relative w-full xl:w-1/3'>
           <Sidebar
             setCurrentMatrix={setCurrentMatrix} 
           />
         </div>
-        <div className='relative w-full xl:w-2/3 bg-slate-200'> 
+        <div className='relative w-full xl:w-2/3'> 
           {currentMatrix 
             ? 
             <Matrix
@@ -33,6 +35,7 @@ function App() {
         </div>
       </div>
     </TaskProvider>
+    </SettingsProvider>
   </DndProvider>
   )
 }
