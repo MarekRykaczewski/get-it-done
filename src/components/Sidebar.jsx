@@ -50,14 +50,17 @@ const Sidebar = ({ setCurrentMatrix }) => {
 
   return (
     <nav className={`relative flex flex-col px-20 ${settings.darkMode ? "bg-slate-900" : "bg-slate-300"} transition-colors duration-500 h-full`}>
-        <div className="flex w-full justify-center items-center gap-3">
-          <h1 className='mt-10 text-4xl text-center font-logo text-white drop-shadow font-bold mb-10'> GET IT DONE 👔 </h1>
+        <div className="mb-10 mt-10 gap-10 flex w-full justify-center items-center">
+          <h1 className='text-4xl self-center text-center font-logo text-white drop-shadow font-bold'> GET IT DONE 👔 </h1>
           
-          <button onClick={() => setGuideModal(true)} className='text-3xl text-slate-500 transition rounded-full p-2 hover:bg-slate-200'> 🛈 </button>
-          <GuideModal open={guideModal} onClose={() => setGuideModal(!guideModal)} />
-        
-          <button onClick={() => setSettingsModal(true)} className='text-3xl text-slate-500 transition rounded-full p-2 hover:bg-slate-200'> ⚙️ </button>
-          <SettingsModal open={settingsModal} onClose={() => setSettingsModal(!settingsModal)} />
+          <div className={`flex w-fit items-center justify-center gap-4 p-6 rounded-xl ${settings.darkMode ? "bg-slate-800" : "bg-slate-100"} transition-colors duration-500`}>
+            <button onClick={() => setGuideModal(true)} className='text-3xl text-slate-500 transition rounded-full align-middle'> 🛈 </button>
+            <GuideModal open={guideModal} onClose={() => setGuideModal(!guideModal)} />
+          
+            <button onClick={() => setSettingsModal(true)} className='text-3xl text-slate-500 transition rounded-full align-middle'> ⚙️ </button>
+            <SettingsModal open={settingsModal} onClose={() => setSettingsModal(!settingsModal)} />
+          </div>
+          
 
         </div>
         <CreateMatrix
