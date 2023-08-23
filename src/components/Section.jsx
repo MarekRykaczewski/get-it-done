@@ -2,10 +2,13 @@ import Task from "./Task"
 import { useDrop } from "react-dnd"
 import { ItemTypes } from "./Task"
 import ProgressBar from "./ProgressBar"
+import { useSettings } from "../contexts/SettingsContext"
 
 
 const Section = ({ currentMatrix, sectionTasks, tasks, setTasks, color, position, category }) => {
 
+  const { settings } = useSettings()
+  
   const [{ isOver }, drop] = useDrop(() => ({
       accept: ItemTypes.TASK,
       drop: (item) => addItemToSection(item.id),
@@ -48,7 +51,6 @@ const Section = ({ currentMatrix, sectionTasks, tasks, setTasks, color, position
     ))}
     <div className="flex flex-row gap-3 w-full items-center justify-center absolute p-3 bottom-0 right-0">
       <ProgressBar value={completeTasks.length} total={sectionTasks.length} />
-      <span className="flex-3 text-center"> {completeTasks.length} / {sectionTasks.length}</span>
     </div>
 
   </div>
