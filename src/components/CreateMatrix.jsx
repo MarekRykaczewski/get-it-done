@@ -38,7 +38,7 @@ const CreateMatrix = ({ matrixes, setMatrixes }) => {
     <form className="flex self-center mb-10" onSubmit={handleSubmit}>
       <input 
       type="text" 
-      className={`border-2 border-slate-400 text-lg ${settings.darkMode ? "bg-slate-500 text-white" : "bg-slate-100"} transition-colors duration-500 rounded-md mr-4 pl-2 h-12 w-64 px-1`}
+      className={`border-2 border-slate-400 text-lg ${settings.darkMode ? "bg-slate-500 text-white placeholder:text-white" : "bg-slate-100"} transition-colors duration-500 rounded-md mr-4 pl-2 h-12 w-64 px-1`}
       value={matrix.name}
       onChange={handleMatrixNameChange} 
       placeholder="Create a new Matrix..."
