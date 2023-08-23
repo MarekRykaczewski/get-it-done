@@ -10,6 +10,11 @@ const SettingsModal = ({ open, onClose }) => {
     setSettings(newSettings);
   };
 
+  const handleShowProgressBarsChange = (event) => {
+    const newSettings = { ...settings, showProgressBars: event.target.checked };
+    setSettings(newSettings);
+  };
+
   return (
     <Modal open={open}>
 
@@ -18,7 +23,12 @@ const SettingsModal = ({ open, onClose }) => {
     
     <div className="flex gap-3">
       <label htmlFor="show_progress"> Show quadrant progress </label>
-      <input id="show_progress" type="checkbox" />
+      <input 
+        id="show_progress" 
+        type="checkbox" 
+        checked={settings.showProgressBars}
+        onChange={handleShowProgressBarsChange}
+      />
     </div>
     
     <h1 className="text-xl font-bold text-gray-500 mb-2 mt-2"> Theme </h1>

@@ -4,7 +4,8 @@ const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
   const [settings, setSettings] = useState({
-    darkMode: false
+    darkMode: false,
+    showProgressBars: false
   });
 
   const toggleDarkMode = () => {
@@ -14,9 +15,15 @@ export const SettingsProvider = ({ children }) => {
     }));
   };
 
+  const toggleShowProgressBars = () => {
+    setSettings(prevSettings => ({
+      ...prevSettings,
+      showProgressBars: !prevSettings.showProgressBars,
+    }));
+  };
 
   return (
-    <SettingsContext.Provider value={{ settings, setSettings, toggleDarkMode }}>
+    <SettingsContext.Provider value={{ settings, setSettings, toggleDarkMode, toggleShowProgressBars }}>
       {children}
     </SettingsContext.Provider>
   );
