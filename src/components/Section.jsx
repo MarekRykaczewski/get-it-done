@@ -37,7 +37,7 @@ const Section = ({ currentMatrix, sectionTasks, tasks, setTasks, color, position
   const completeTasks = sectionTasks.filter(task => task.completed == true)
 
   return (
-    <div ref={drop} className={`relative flex flex-col p-6 gap-2 items-center justify-start ${position} ${color} h-full w-full overflow-y-auto`}>
+    <div ref={drop} style={{backgroundColor: `${color}` }} className={`relative flex flex-col p-6 gap-2 items-center justify-start ${position} h-full w-full overflow-y-auto`}>
     {sectionTasks.map(task => (
       <Task 
         currentMatrix={currentMatrix}

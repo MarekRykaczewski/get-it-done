@@ -3,7 +3,7 @@ import Modal from "./Modal"
 
 const SettingsModal = ({ open, onClose }) => {
 
-  const { settings, setSettings } = useSettings()
+  const { settings, setSettings, updateGridColor } = useSettings()
 
   const handleDarkModeChange = (event) => {
     const newSettings = { ...settings, darkMode: event.target.checked };
@@ -13,6 +13,10 @@ const SettingsModal = ({ open, onClose }) => {
   const handleShowProgressBarsChange = (event) => {
     const newSettings = { ...settings, showProgressBars: event.target.checked };
     setSettings(newSettings);
+  };
+
+  const handleColorChange = (colorKey, newColor) => {
+    updateGridColor(colorKey, newColor);
   };
 
   return (
@@ -46,10 +50,10 @@ const SettingsModal = ({ open, onClose }) => {
     <div className="flex gap-3 items-center">
       <label htmlFor="show_progress"> Quadrant Colors </label>
       <div className="grid grid-cols-2">
-        <input value={"#86efac"} type="color" />
-        <input value={"#93c5fd"} type="color" />
-        <input value={"#fdba74"} type="color" />
-        <input value={"#fca5a5"} type="color" />
+        <input value={settings.gridColors.color1} type="color" onChange={e => handleColorChange('color1', e.target.value)} />
+        <input value={settings.gridColors.color2} type="color" onChange={e => handleColorChange('color2', e.target.value)} />
+        <input value={settings.gridColors.color3} type="color" onChange={e => handleColorChange('color3', e.target.value)}/>
+        <input value={settings.gridColors.color4} type="color" onChange={e => handleColorChange('color4', e.target.value)} />
       </div>
     </div>
     

@@ -26,10 +26,10 @@ const Matrix = ({ currentMatrix }) => {
   }, [currentMatrix.id])
 
   const positionMap = {
-    do: { col: 1, row: 1, color: 'bg-green-300' },
-    decide: { col: 2, row: 1, color: 'bg-blue-300' },
-    delegate: { col: 1, row: 2, color: 'bg-orange-300' },
-    delete: { col: 2, row: 2, color: 'bg-red-300' },
+    do: { col: 1, row: 1, color: settings.gridColors.color1 },
+    decide: { col: 2, row: 1, color: settings.gridColors.color2 },
+    delegate: { col: 1, row: 2, color: settings.gridColors.color3 },
+    delete: { col: 2, row: 2, color: settings.gridColors.color4 },
   };
 
   return (  
