@@ -1,18 +1,25 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
-  const [settings, setSettings] = useState({
-    darkMode: false,
-    showProgressBars: false,
-    gridColors: {
-      color1: '#86efac', // Green
-      color2: '#93c5fd', // Blue
-      color3: '#fdba74', // Orange
-      color4: '#fca5a5', // Red
-    }
+  const [settings, setSettings] = useState(() => {
+    const storedSettings = localStorage.getItem('appSettings');
+    return storedSettings ? JSON.parse(storedSettings) : {
+      darkMode: false,
+      showProgressBars: false,
+      gridColors: {
+        color1: '#86efac', // Green
+        color2: '#93c5fd', // Blue
+        color3: '#fdba74', // Orange
+        color4: '#fca5a5', // Red
+      },
+    };
   });
+
+  useEffect(() => {
+    localStorage.setItem('appSettings', JSON.stringify(settings));
+  }, [settings]);
 
   const toggleDarkMode = () => {
     setSettings(prevSettings => ({
