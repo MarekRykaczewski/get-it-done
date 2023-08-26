@@ -49,9 +49,9 @@ const Section = ({ currentMatrix, sectionTasks, tasks, setTasks, color, position
         completed={task.completed}
       /> 
     ))}
-    <div className="flex flex-row gap-3 w-full items-center justify-center absolute p-3 bottom-0 right-0">
+    {settings.showProgressBars && <div className="flex flex-row gap-3 w-full items-center justify-center absolute p-3 bottom-0 right-0">
       <ProgressBar value={completeTasks.length} total={sectionTasks.length} />
-    </div>
+    </div>}
 
   </div>
   )
