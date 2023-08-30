@@ -60,14 +60,14 @@ const ReminderModal = ({ open, onClose }) => {
         <h1 className="font-bold text-center text-2xl">Set a reminder</h1>
         <h2>Date</h2>
         <input
-          className="border rounded-lg border-black p-1"
+          className="border rounded-lg border-black p-1 text-slate-800"
           type="datetime-local"
           value={reminderDateTime}
           onChange={(e) => setReminderDateTime(e.target.value)}
         />
         <h2>Message</h2>
         <input
-          className="border rounded-lg border-black p-1"
+          className="border rounded-lg border-black p-1 placeholder:text-slate-300"
           type="text"
           placeholder="Reminder text"
           value={reminderDescription}
